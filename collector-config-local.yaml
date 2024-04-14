@@ -12,6 +12,9 @@ processors:
 exporters:
   logging:
     loglevel: debug
+  prometheus:
+    endpoint: collector:6666
+    namespace: default
   otlp:
     endpoint: tempo:4317
     tls:
@@ -22,7 +25,7 @@ service:
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [logging, prometheus]
     traces:
       receivers: [otlp]
       processors: [batch]
