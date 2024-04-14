@@ -7,4 +7,4 @@ if [ ! -f "${AGENT_FILE}" ]; then
   curl -L https://github.com/aws-observability/aws-otel-java-instrumentation/releases/download/v1.28.1/aws-opentelemetry-agent.jar --output ${AGENT_FILE}
 fi
 
-java -jar target/hello-app-1.0.jar
+java -javaagent:./${AGENT_FILE} -jar target/hello-app-1.0.jar
